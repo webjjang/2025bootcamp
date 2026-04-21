@@ -5,9 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.board.vo.BoardVO;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.java.Log;
 
@@ -40,7 +42,10 @@ public class BoardController {
 	//    Long : String -> Long - null로 세팅 오류가 안난다.
 	// request -> Model / ModelAndView
 	// MVC - Model + View::JSP + C::Controller
-	public String list(Long page, Model model, HttpSession session) {
+	// html 이나 주소의 name 이 변수 이름과 같아야 하는데 다르면 @RequestParam 안에 name 을 지정한다
+	// 만약에 페이지가 넘어오지 않으면 기본값 세팅 defaultValue 속성으로 세팅한다. 문자열로 한다.
+	public String list(@RequestParam(name = "page", defaultValue = "1") Long page,
+			Model model, HttpSession session, HttpServletRequest request) {
 		log.info("일반게시판 리스트");
 		log.info("page=" + page);
 		model.addAttribute("list","리스트 데이터 입니다.");
