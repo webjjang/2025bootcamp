@@ -1,5 +1,6 @@
 package com.example.board.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.board.service.BoardService;
 import com.example.board.vo.BoardVO;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -33,6 +35,9 @@ import lombok.extern.java.Log;
 @Log
 public class BoardController {
 	
+	@Autowired
+	private BoardService service;
+	
 	// 1.일반 게시판 리스트 - list.do : get
 	// @GetMapping - 1. 주소 입력란에 입력해서 요청. 2. html의 a tag. 
 	// 3. js : location=uri 4. form method 설정을 안했거난 get으로 설정
@@ -48,6 +53,7 @@ public class BoardController {
 			Model model, HttpSession session, HttpServletRequest request) {
 		log.info("일반게시판 리스트");
 		log.info("page=" + page);
+		service.list();
 		model.addAttribute("list","리스트 데이터 입니다.");
 		return "board/list";
 	}
