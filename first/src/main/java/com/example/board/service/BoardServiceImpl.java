@@ -2,6 +2,7 @@ package com.example.board.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.example.board.vo.BoardVO;
@@ -18,6 +19,7 @@ import lombok.extern.java.Log;
 //@RestController - URL과 연결되어 REST(html이 아닌 순수 데이터) 제공.
 //@~~Advice - 예외처리 객체
 @Service
+@Qualifier("boardServiceImpl")
 @Log
 public class BoardServiceImpl implements BoardService{
 

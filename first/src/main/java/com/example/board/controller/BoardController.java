@@ -1,6 +1,7 @@
 package com.example.board.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import com.example.board.vo.BoardVO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import lombok.Setter;
 import lombok.extern.java.Log;
 
 //@어노테이션 -> 1. 타입 사용가능, 2. 데이터 저장(속성), 3. 확인
@@ -35,7 +37,10 @@ import lombok.extern.java.Log;
 @Log
 public class BoardController {
 	
+	// 객체 연결하는 어노테니션
+	// @Setter() - Lombok(+Spring @Autowired), @Autowired - Spring, @Inject - java
 	@Autowired
+	@Qualifier("boardServiceImpl")
 	private BoardService service;
 	
 	// 1.일반 게시판 리스트 - list.do : get
