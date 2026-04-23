@@ -2,6 +2,7 @@ package com.webjjang.board.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,14 +20,14 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping("/list.do")
-	public String list(Long page) {
+	public String list(Long page, Model model) {
 		
 		log.info("일반게시판 리스트");
 		// @Log : log.info(str), @Log4j2 : log.info(Object)
 		log.info(page);
 		
-		// 서비스 실행
-		service.list();
+		// 서비스 실행해서 결과를 model에 담는다.
+		model.addAttribute("list", service.list());
 		
 		return "board/list";
 	}
