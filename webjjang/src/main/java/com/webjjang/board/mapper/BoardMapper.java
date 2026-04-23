@@ -13,6 +13,8 @@ public interface BoardMapper {
 	public List<BoardVO> list();
 	
 	// 2. view
+	public BoardVO view(Long no);
+	
 	// 3. write
 	// 4. update
 	// 5. delete

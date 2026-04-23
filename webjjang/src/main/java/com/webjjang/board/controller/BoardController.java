@@ -32,4 +32,12 @@ public class BoardController {
 		return "board/list";
 	}
 	
+	@GetMapping("/view.do")
+	public String view(Long no, Integer inc, Model model) {
+		log.info("일반게시판 글보기");
+		log.info("no=" + no + ", inc=" + inc);
+		model.addAttribute("vo", service.view(no, inc));
+		return "board/view";
+	}
+	
 }

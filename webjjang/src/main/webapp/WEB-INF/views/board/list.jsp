@@ -21,7 +21,11 @@
 		<c:forEach items="${list }" var="vo">
 			<tr>
 				<td>${vo.no }</td>
-				<td>${vo.title }</td>
+				<td>
+					<a href="view.do?no=${vo.no}&inc=1">
+						${vo.title }
+					</a>
+				</td>
 				<td>${vo.writer }</td>
 				<td>
 					<fmt:formatDate value="${vo.writeDate }" pattern="yyyy-MM-dd"/>

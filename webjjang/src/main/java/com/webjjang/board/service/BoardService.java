@@ -24,4 +24,8 @@ public class BoardService {
 		return mapper.list();
 	}
 	
+	public BoardVO view(Long no, Integer inc) {
+		return mapper.view(no);
+	}
+	
 }

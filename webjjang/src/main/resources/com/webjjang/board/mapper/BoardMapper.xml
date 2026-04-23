@@ -17,4 +17,10 @@
 		) where rnum between 1 and 10
 	</select>
 
+	<!-- 2. view -->
+	<select id="view" resultType="com.webjjang.board.vo.BoardVO">
+		select no, title, content, writer, writeDate, hit
+		where no = #{no}
+	</select>
+	
 </mapper>
