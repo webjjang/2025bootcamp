@@ -20,6 +20,7 @@
 	<!-- 2. view -->
 	<select id="view" resultType="com.webjjang.board.vo.BoardVO">
 		select no, title, content, writer, writeDate, hit
+		from board
 		where no = #{no}
 	</select>
 	
