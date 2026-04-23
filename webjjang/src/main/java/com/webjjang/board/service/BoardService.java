@@ -2,8 +2,10 @@ package com.webjjang.board.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.webjjang.board.mapper.BoardMapper;
 import com.webjjang.board.vo.BoardVO;
 
 import lombok.extern.log4j.Log4j2;
@@ -14,9 +16,12 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class BoardService {
 
+	@Autowired
+	private BoardMapper mapper;
+	
 	public List<BoardVO> list() {
 		log.info("일반게시판 처리");
-		return null;
+		return mapper.list();
 	}
 	
 }
