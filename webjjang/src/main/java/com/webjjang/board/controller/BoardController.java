@@ -71,5 +71,12 @@ public class BoardController {
 		return "redirect:view.do?no=" + vo.getNo() + "&inc=0";
 	}
 	
+	// 5. 글삭제 처리
+	@PostMapping("/delete.do")
+	public String delete(BoardVO vo) {
+		Integer result = service.delete(vo);
+		return "redirect:list.do";
+	}
+	
 	
 }
