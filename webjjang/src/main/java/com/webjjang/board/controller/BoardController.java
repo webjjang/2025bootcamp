@@ -56,4 +56,6 @@ public class BoardController {
 		service.write(vo);
 		return "redirect:list.do";
 	}
+	
+	
 }
