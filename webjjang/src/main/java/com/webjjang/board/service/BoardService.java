@@ -29,8 +29,8 @@ public class BoardService {
 	}
 	
 	// 3. write
-	public Integer writer(BoardVO vo) {
-		return mapper.writer(vo);
+	public Integer write(BoardVO vo) {
+		return mapper.write(vo);
 	}
 	
 	// 4. update
