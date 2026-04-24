@@ -34,5 +34,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<br>
+	<a href="writeForm.do">등록</a>
 </body>
 </html>
