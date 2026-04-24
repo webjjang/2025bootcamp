@@ -19,6 +19,7 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
+	//1. 리스트
 	@GetMapping("/list.do")
 	public String list(Long page, Model model) {
 		
@@ -32,6 +33,7 @@ public class BoardController {
 		return "board/list";
 	}
 	
+	// 2. 글보기
 	@GetMapping("/view.do")
 	public String view(Long no, Integer inc, Model model) {
 		log.info("일반게시판 글보기");
@@ -40,4 +42,9 @@ public class BoardController {
 		return "board/view";
 	}
 	
+	// 3-1. 글등록 폼
+	@GetMapping("/writeForm.do")
+	public String writeForm() {
+		return "board/writeForm";
+	}
 }
