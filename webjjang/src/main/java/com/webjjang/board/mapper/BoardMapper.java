@@ -16,7 +16,12 @@ public interface BoardMapper {
 	public BoardVO view(Long no);
 	
 	// 3. write
+	public Integer writer(BoardVO vo);
+	
 	// 4. update
+	public Integer update(BoardVO vo);
+	
 	// 5. delete
+	public Integer delete(BoardVO vo);
 	
 }

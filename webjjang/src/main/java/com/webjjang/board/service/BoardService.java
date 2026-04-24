@@ -28,4 +28,20 @@ public class BoardService {
 		return mapper.view(no);
 	}
 	
+	// 3. write
+	public Integer writer(BoardVO vo) {
+		return mapper.writer(vo);
+	}
+	
+	// 4. update
+	public Integer update(BoardVO vo) {
+		return mapper.update(vo);
+	}
+	
+	// 5. delete
+	public Integer delete(BoardVO vo) {
+		return mapper.delete(vo);
+	}
+	
+	
 }
