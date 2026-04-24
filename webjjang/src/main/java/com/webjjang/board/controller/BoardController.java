@@ -57,5 +57,19 @@ public class BoardController {
 		return "redirect:list.do";
 	}
 	
+	// 4-1. 글수정 폼
+	@GetMapping("/updateForm.do")
+	public String updateForm(Long no, Model model) {
+		model.addAttribute("vo", service.view(no, 0));
+		return "board/updateForm";
+	}
+	
+	//4-2. 글수정 처리
+	@PostMapping("/update.do")
+	public String update(BoardVO vo) {
+		Integer result = service.update(vo);
+		return "redirect:view.do?no=" + vo.getNo() + "&inc=0";
+	}
+	
 	
 }

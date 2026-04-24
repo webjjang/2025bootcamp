@@ -42,7 +42,7 @@
 		</tr>
 	</table>
 	<br>
-	<a href="updateForm.do">수정</a>
+	<a href="updateForm.do?no=${vo.no }">수정</a>
 	<a href="list.do">리스트</a><br>
 	<form action="delete.do" method="post">
 		<input name="no" value="${vo.no }" type="hidden">
