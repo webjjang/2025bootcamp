@@ -6,7 +6,13 @@
 
 <mapper namespace="com.webjjang.board.mapper.BoardMapper">
 
-	<!-- 1. list -->
+	<!-- 1-1. getTotalRow -->
+	<select id="getTotalRow" resultType="Long">
+		select count(*)
+		from board
+	</select>
+
+	<!-- 1-2. list -->
 	<select id="list" resultType="com.webjjang.board.vo.BoardVO">
 		<![CDATA[
 			select no, title, writer, writeDate, hit
@@ -16,7 +22,7 @@
 					select no, title, writer, writeDate, hit
 					from board order by no desc
 				)
-			) where rnum >= 1 and rnum <=10
+			) where rnum between #{startRow} and #{endRow}
 		]]>
 	</select>
 

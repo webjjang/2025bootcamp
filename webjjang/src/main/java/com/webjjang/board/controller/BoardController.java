@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.webjjang.board.service.BoardService;
 import com.webjjang.board.vo.BoardVO;
+import com.webjjang.util.page.PageObject;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.log4j.Log4j2;
 
 @Controller
@@ -23,14 +25,20 @@ public class BoardController {
 	
 	//1. 리스트
 	@GetMapping("/list.do")
-	public String list(Long page, Model model) {
+//	public String list(Long page, Model model) 
+	public String list(Model model, HttpServletRequest request) 
+	throws Exception {
 		
 		log.info("일반게시판 리스트");
 		// @Log : log.info(str), @Log4j2 : log.info(Object)
-		log.info(page);
+		// log.info(page);
+		// PageObject을 이용해서 넘어오는 페이지 정보와 검색 정보를 받는다.
+		PageObject pageObject = PageObject.getInstance(request);
 		
 		// 서비스 실행해서 결과를 model에 담는다.
-		model.addAttribute("list", service.list());
+		model.addAttribute("list", service.list(pageObject));
+		// 화면에 페이지 네이션 처리를 위해서 pageObject를 담아서 넘긴다.
+		model.addAttribute("pageObject", pageObject);
 		
 		return "board/list";
 	}

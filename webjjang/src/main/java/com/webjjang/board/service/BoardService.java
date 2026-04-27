@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.webjjang.board.mapper.BoardMapper;
 import com.webjjang.board.vo.BoardVO;
+import com.webjjang.util.page.PageObject;
 
 import lombok.extern.log4j.Log4j2;
 
@@ -19,9 +20,11 @@ public class BoardService {
 	@Autowired
 	private BoardMapper mapper;
 	
-	public List<BoardVO> list() {
+	public List<BoardVO> list(PageObject pageObject) {
 		log.info("일반게시판 처리");
-		return mapper.list();
+		// setTotalRow
+		pageObject.setTotalRow(mapper.getTotalRow());
+		return mapper.list(pageObject);
 	}
 	
 	public BoardVO view(Long no, Integer inc) {
