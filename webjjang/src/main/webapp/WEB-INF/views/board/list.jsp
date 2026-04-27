@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="pageNav" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,11 @@
 
   <!-- jQueury lib 등록 : CDN -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- icon lib 등록 - awesome 4 -->
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 <style type="text/css">
 .dataRow:hover{
@@ -65,6 +71,8 @@ $(function(){
 		</c:forEach>
 	</table>
 	<br>
+	<!-- pageNav에 필요한 웹라이브러리 : Bootstarp 5, jQuery 3.x, tag 파일, 아이콘:awesome 4 -->
+	<div><pageNav:pageNav listURI="list.do" pageObject="${pageObject }" /></div>
 	<a href="writeForm.do" class="btn btn-primary">등록</a>
 </div>
 </body>
