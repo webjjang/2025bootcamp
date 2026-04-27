@@ -28,6 +28,8 @@ public class BoardService {
 	}
 	
 	public BoardVO view(Long no, Integer inc) {
+		// inc = 1일때만 조회수 1 증가시킨다.
+		if(inc == 1) mapper.increase(no);
 		return mapper.view(no);
 	}
 	

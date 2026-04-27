@@ -16,7 +16,10 @@ public interface BoardMapper {
 	// 1-2. list
 	public List<BoardVO> list(PageObject pageObject);
 	
-	// 2. view
+	// 2-1. increase
+	public Integer increase(Long no);
+	
+	// 2-2. view
 	public BoardVO view(Long no);
 	
 	// 3. write

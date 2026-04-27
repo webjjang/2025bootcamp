@@ -26,7 +26,14 @@
 		]]>
 	</select>
 
-	<!-- 2. view -->
+	<!-- 2-1. 조회수 1 증가 -->
+	<update id="increase">
+		update board
+		set hit = hit + 1
+		where no = #{no}
+	</update>
+
+	<!-- 2-2. view -->
 	<select id="view" resultType="com.webjjang.board.vo.BoardVO">
 		select no, title, content, writer, writeDate, hit
 		from board
