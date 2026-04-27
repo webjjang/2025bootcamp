@@ -25,10 +25,17 @@
 <script type="text/javascript">
 // body tag의 객체가 다 로딩이 된 후에 function()-익명함수 파라메터로 전달되고 변수에 전달되서 코드가 실행된다.
 $(function(){
+	// 한 줄에 마우스를 올리거난 내릴 때 배경 색 변경
 	$(".dataRow").mouseover(function(){
 		$(this).addClass("table-secondary");
 	}).mouseout(function(){
 		$(this).removeClass("table-secondary");
+	});
+	
+	// 한줄을 클릭하면 글보기로 이동시키자. - 글번호 외 페이지 정보, 검색 정보를 같이 넘겨야 한다.
+	$(".dataRow").click(function(){
+		let no = $(this).find(".no").text();
+		location = "view.do?no=" + no + "&inc=1";
 	});
 });
 </script>
@@ -48,11 +55,7 @@ $(function(){
 		<c:forEach items="${list }" var="vo">
 			<tr class="dataRow">
 				<td class="no">${vo.no }</td>
-				<td>
-					<a href="view.do?no=${vo.no}&inc=1">
-						${vo.title }
-					</a>
-				</td>
+				<td>${vo.title }</td>
 				<td>${vo.writer }</td>
 				<td>
 					<fmt:formatDate value="${vo.writeDate }" pattern="yyyy-MM-dd"/>
