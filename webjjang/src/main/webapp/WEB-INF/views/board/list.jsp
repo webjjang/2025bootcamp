@@ -6,11 +6,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>일반 게시판 리스트</title>
+
+  <!-- Bootstrap 5 lib 등록 : CDN -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- jQueury lib 등록 : CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<style type="text/css">
+.dataRow:hover{
+	cursor: pointer;
+}
+</style>
+
+<script type="text/javascript">
+// body tag의 객체가 다 로딩이 된 후에 function()-익명함수 파라메터로 전달되고 변수에 전달되서 코드가 실행된다.
+$(function(){
+	$(".dataRow").mouseover(function(){
+		$(this).addClass("table-secondary");
+	}).mouseout(function(){
+		$(this).removeClass("table-secondary");
+	});
+});
+</script>
+
 </head>
 <body>
+<div class="container">
 	<h3>일반게시판 리스트</h3>
-	<table>
+	<table class="table">
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
@@ -19,8 +46,8 @@
 			<th>조회수</th>
 		</tr>
 		<c:forEach items="${list }" var="vo">
-			<tr>
-				<td>${vo.no }</td>
+			<tr class="dataRow">
+				<td class="no">${vo.no }</td>
 				<td>
 					<a href="view.do?no=${vo.no}&inc=1">
 						${vo.title }
@@ -35,6 +62,7 @@
 		</c:forEach>
 	</table>
 	<br>
-	<a href="writeForm.do">등록</a>
+	<a href="writeForm.do" class="btn btn-primary">등록</a>
+</div>
 </body>
 </html>
