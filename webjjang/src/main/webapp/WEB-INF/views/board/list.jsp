@@ -9,18 +9,7 @@
 <meta charset="UTF-8">
 <title>일반 게시판 리스트</title>
 
-  <!-- Bootstrap 5 lib 등록 : CDN -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- jQueury lib 등록 : CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-<!-- icon lib 등록 - awesome 4 -->
-<link rel="stylesheet"
- href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<!-- 필요한 라이브러리는 main.jsp에 등록 -->
 
 <style type="text/css">
 .dataRow:hover{
