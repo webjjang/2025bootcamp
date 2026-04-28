@@ -62,7 +62,7 @@ $(function(){
 	<br>
 	<!-- pageNav에 필요한 웹라이브러리 : Bootstarp 5, jQuery 3.x, tag 파일, 아이콘:awesome 4 -->
 	<div><pageNav:pageNav listURI="list.do" pageObject="${pageObject }" /></div>
-	<a href="writeForm.do" class="btn btn-primary">등록</a>
+	<a href="writeForm.do?perPageNum=${pageObject.perPageNum }" class="btn btn-primary">등록</a>
 </div>
 </body>
 </html>

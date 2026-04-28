@@ -44,8 +44,7 @@ public class BoardController {
 		model.addAttribute("contentPage", "../board/list.jsp");
 		// 창이름
 		model.addAttribute("title", "일반게시판 리스트");
-		
-		
+				
 		return "main/main";
 	}
 	
@@ -60,15 +59,19 @@ public class BoardController {
 		model.addAttribute("contentPage", "../board/view.jsp");
 		// 창이름
 		model.addAttribute("title", "일반게시판 글보기");
-		
-		
+				
 		return "main/main";
 	}
 	
 	// 3-1. 글등록 폼
 	@GetMapping("/writeForm.do")
-	public String writeForm() {
-		return "board/writeForm";
+	public String writeForm(Model model) {
+		// 내용에 해당되는 JSP 정보를 contentPage
+		model.addAttribute("contentPage", "../board/writeForm.jsp");
+		// 창이름
+		model.addAttribute("title", "일반게시판 글등록 폼");
+				
+		return "main/main";
 	}
 	
 	//3-2. 글등록 처리
@@ -82,7 +85,12 @@ public class BoardController {
 	@GetMapping("/updateForm.do")
 	public String updateForm(Long no, Model model) {
 		model.addAttribute("vo", service.view(no, 0));
-		return "board/updateForm";
+		// 내용에 해당되는 JSP 정보를 contentPage
+		model.addAttribute("contentPage", "../board/updateForm.jsp");
+		// 창이름
+		model.addAttribute("title", "일반게시판 글수정");
+				
+		return "main/main";
 	}
 	
 	//4-2. 글수정 처리
