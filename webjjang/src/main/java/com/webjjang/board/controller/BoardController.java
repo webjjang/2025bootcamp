@@ -109,9 +109,20 @@ public class BoardController {
 	
 	// 5. 글삭제 처리
 	@PostMapping("/delete.do")
-	public String delete(BoardVO vo) {
+	public String delete(BoardVO vo, RedirectAttributes rttr, HttpServletRequest request) throws Exception {
+		// 페이지 정보와 검색 정보를 받기
+		PageObject pageObject = PageObject.getInstance(request);
+		
+		// 삭제 처리
 		Integer result = service.delete(vo);
-		return "redirect:list.do";
+		if (result == 1) { 
+			rttr.addFlashAttribute("msg", "일반 게시판 글삭제가 되었습니다.");
+			return "redirect:list.do?perPageNum=" + pageObject.getPerPageNum();
+		} else {
+			rttr.addFlashAttribute("msg", "일반 게시판 글삭제가 되지 않았습니다.<hr>정보를 확인하고 다시 시도해 주세요.");
+			return "redirect:view.do?no=" + vo.getNo() + "&inc=0&" + pageObject.getPageQuery();
+		}
+		
 	}
 	
 	
