@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.webjjang.board.service.BoardService;
@@ -77,7 +78,7 @@ public class BoardController {
 	
 	//3-2. 글등록 처리
 	@PostMapping("/write.do")
-	public String write(BoardVO vo, Integer perPageNum, RedirectAttributes rttr) {
+	public String write(BoardVO vo, @RequestParam(defaultValue = "10") Integer perPageNum, RedirectAttributes rttr) {
 		service.write(vo);
 		rttr.addFlashAttribute("msg", "일반 게시판 글등록이 되었습니다."); // session을 사용한 잠시 존재하는 데이터 처리
 		return "redirect:list.do?perPageNum=" + perPageNum;

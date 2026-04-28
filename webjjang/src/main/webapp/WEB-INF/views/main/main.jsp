@@ -35,7 +35,7 @@ $(function(){
 <body>
 <!-- @include 디렉티브 태그 - 소스 복붙, jsp:include 액션 태그 - 메서드 실행하고 돌아온다. -->
 <jsp:include page="header.jsp"/>
-<div style="margin: 80px auto">
+<div style="margin: 80px auto" class="container">
 	<jsp:include page="${contentPage }"/>
 </div>
 <jsp:include page="footer.jsp"/>
