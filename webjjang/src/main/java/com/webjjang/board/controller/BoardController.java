@@ -98,9 +98,13 @@ public class BoardController {
 	
 	//4-2. 글수정 처리
 	@PostMapping("/update.do")
-	public String update(BoardVO vo) {
+	public String update(BoardVO vo, HttpServletRequest request, RedirectAttributes rttr) throws Exception {
+		// 페이지 정보와 검색 정보를 받는다.
+		PageObject pageObject = PageObject.getInstance(request);
 		Integer result = service.update(vo);
-		return "redirect:view.do?no=" + vo.getNo() + "&inc=0";
+		if (result == 1) rttr.addFlashAttribute("msg", "일반 게시판 글수정이 되었습니다.");
+		else rttr.addFlashAttribute("msg", "일반 게시판 글수정에 실패 하였습니다.<hr>정보를 확인하고 다시 시도해 주세요.");
+		return "redirect:view.do?no=" + vo.getNo() + "&inc=0&" + pageObject.getPageQuery();
 	}
 	
 	// 5. 글삭제 처리

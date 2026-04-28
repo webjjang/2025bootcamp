@@ -30,7 +30,7 @@ $(function(){
 	// 한줄을 클릭하면 글보기로 이동시키자. - 글번호 외 페이지 정보, 검색 정보를 같이 넘겨야 한다.
 	$(".dataRow").click(function(){
 		let no = $(this).find(".no").text();
-		location = "view.do?no=" + no + "&inc=1";
+		location = "view.do?no=" + no + "&inc=1&${pageObject.pageQuery}";
 	});
 });
 </script>
