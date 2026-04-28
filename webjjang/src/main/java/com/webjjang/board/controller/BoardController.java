@@ -40,7 +40,13 @@ public class BoardController {
 		// 화면에 페이지 네이션 처리를 위해서 pageObject를 담아서 넘긴다.
 		model.addAttribute("pageObject", pageObject);
 		
-		return "board/list";
+		// 내용에 해당되는 JSP 정보를 contentPage
+		model.addAttribute("contentPage", "../board/list.jsp");
+		// 창이름
+		model.addAttribute("title", "일반게시판 리스트");
+		
+		
+		return "main/main";
 	}
 	
 	// 2. 글보기
@@ -49,7 +55,14 @@ public class BoardController {
 		log.info("일반게시판 글보기");
 		log.info("no=" + no + ", inc=" + inc);
 		model.addAttribute("vo", service.view(no, inc));
-		return "board/view";
+		
+		// 내용에 해당되는 JSP 정보를 contentPage
+		model.addAttribute("contentPage", "../board/view.jsp");
+		// 창이름
+		model.addAttribute("title", "일반게시판 글보기");
+		
+		
+		return "main/main";
 	}
 	
 	// 3-1. 글등록 폼
