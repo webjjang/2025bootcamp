@@ -3,6 +3,7 @@ package com.webjjang.member.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.webjjang.member.vo.LoginVO;
@@ -27,6 +28,7 @@ public class MemberController {
 	}
 	
 	// 1-2. login 처리
+	@PostMapping("/login.do")
 	public String login(LoginVO vo) {
 		
 		return "redirect:/board/list.do";
