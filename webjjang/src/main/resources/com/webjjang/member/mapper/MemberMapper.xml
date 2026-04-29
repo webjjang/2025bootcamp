@@ -8,6 +8,6 @@
 	<select id="login" resultType="com.webjjang.member.vo.LoginVO">
 		select m.id, m.name, m.gradeNo, g.gradeName
 		from member m, grade g
-		where m.id = #{id} and m.pw = #{pw}
+		where (m.id = #{id} and m.pw = #{pw}) and (m.gradeNo = g.gradeNo)
 	</select>
 </mapper>
