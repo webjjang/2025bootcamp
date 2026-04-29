@@ -49,6 +49,19 @@ public class MemberController {
 		rttr.addFlashAttribute("msg", "로그인이 되었습니다.<hr>즐거운 시간되세요.");
 		return "redirect:/board/list.do";
 	}
+	
 	// 2. logout
+	@GetMapping("/logout.do")
+	public String logout(HttpSession session, RedirectAttributes rttr) {
+		
+		// 로그인 정보를 지운다.
+		session.removeAttribute("login");
+		// session.invalidate(); // session 객체를 전체 다 없앤다.
+		
+		// 메세지 처리
+		rttr.addFlashAttribute("msg", "로그아웃 되었습니다.<hr>불편한 점이 있으시면 고객센테를 이용해 주세요.");
+		
+		return "redirect:/board/list.do";
+	}
 	
 }
