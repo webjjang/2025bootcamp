@@ -5,13 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<!-- Bootstrap 라이브러리 등록 --------- -->
-
-<!-- jQuery 라이브러리 등록 - 자바스크립트 함수 : jQuery() ==> $() -->
+<!-- Bootstrap / jQuery 라이브러리 등록 - main.jsp -->
  
   <script type="text/javascript">
   $(function(){
-	  // id check 변수
+	  // id check 변수 - false : 사용 불가능(중복), true : 사용 가능
 	  let idCheck = false;
 	  
 	  // 데이터 넘기는(submit()) 처리 - form 데이터에 대한 submit
@@ -39,6 +37,7 @@
 		 history.back();
 	  });
 	  
+	  // 아이디에 키보드 입력 할 때마다 처리
 	  $("#id").keyup(function(){
 		  idCheck = false;
 		 // alert($("#id").val());
@@ -57,6 +56,7 @@
 			  $.ajax(
 				// JSON 데이터 ->
 				{
+					// 아이디 중복 체크를 위한 처리
 					url: "checkId.do?id=" + id, // 서버에 비동기식으로 요청 URI
 					// 서버가 정상적으로 동작했을 때 처리 메서드
 					success: function(result){ 

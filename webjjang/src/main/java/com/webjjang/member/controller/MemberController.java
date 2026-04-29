@@ -64,4 +64,16 @@ public class MemberController {
 		return "redirect:/board/list.do";
 	}
 	
+	// 3. 회원 가입 폼
+	@GetMapping("/writeForm.do")
+	public String writeForm(Model model) {
+		
+		// 내용에 해당되는 JSP 정보를 contentPage
+		model.addAttribute("contentPage", "../member/writeForm.jsp");
+		// 창이름
+		model.addAttribute("title", "회원가입 폼");
+		
+		return "main/main";
+	}
+	
 }
