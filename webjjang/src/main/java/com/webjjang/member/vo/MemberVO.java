@@ -8,6 +8,7 @@ import lombok.Data;
 public class MemberVO {
 
 	// userNo - 숫자 pk 추가 하는 경우 - 숫자 비교가 빠르다. - id 대신에 처리한다.
+	// 회원가입 - id, pw, pw2, name, gender, birth, tel, email
 	private String id;
 	private String pw;
 	private String name;
