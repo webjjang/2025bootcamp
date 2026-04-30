@@ -100,4 +100,26 @@ public class MemberController {
 		return "redirect:/board/list.do";
 	}
 	
+	// 4. 내/회원 정보 보기 - 회원 정보 보기 : 아이디가 넘어온다.
+	// 				내 정보 보기 : 아이디가 안 넘어 온다. session에서 꺼낸다.
+	@GetMapping("/view.do")
+	public String view(String id, Model model, HttpSession session) {
+		
+		// 내 정보(true) 또는 회원 정보(false)
+		Boolean isMine = false;
+		
+		if(id == null) {
+			isMine = true;
+			// session에서 아이디 꺼내오기
+			id = ((LoginVO)session.getAttribute("login")).getId();
+		}
+		
+		// 내용에 해당되는 JSP 정보를 contentPage
+		model.addAttribute("contentPage", "../member/view.jsp");
+		// 창이름
+		model.addAttribute("title", (isMine)?"내 정보 보기":"회원 정보 보기");
+		
+		return "main/main";
+	}
+	
 }
