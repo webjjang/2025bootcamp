@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.webjjang.member.service.MemberService;
 import com.webjjang.member.vo.LoginVO;
+import com.webjjang.member.vo.MemberVO;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
@@ -86,6 +87,17 @@ public class MemberController {
 	public String checkId(String id) {
 		String resultId = service.checkId(id);
 		return (resultId == null)?"":resultId;
+	}
+	
+	// 3-3. 회원 가입 처리
+	@PostMapping("/write.do")
+	public String write(MemberVO vo, RedirectAttributes rttr) {
+		
+		service.write(vo);
+		
+		rttr.addFlashAttribute("msg", "회원 가입이 성공적으로 되었습니다.<hr>로그인 후 사용하세요~~");
+		
+		return "redirect:/board/list.do";
 	}
 	
 }

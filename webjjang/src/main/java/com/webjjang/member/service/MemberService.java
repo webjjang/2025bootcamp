@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.webjjang.member.mapper.MemberMapper;
 import com.webjjang.member.vo.LoginVO;
+import com.webjjang.member.vo.MemberVO;
 
 @Service
 public class MemberService {
@@ -20,6 +21,11 @@ public class MemberService {
 	// 2. id 중복 체크
 	public String checkId(String id) {
 		return mapper.checkId(id);
+	}
+	
+	// 3. 회원가입
+	public Integer write(MemberVO vo) {
+		return mapper.write(vo);
 	}
 	
 }

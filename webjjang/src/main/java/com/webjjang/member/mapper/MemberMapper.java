@@ -3,6 +3,7 @@ package com.webjjang.member.mapper;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.webjjang.member.vo.LoginVO;
+import com.webjjang.member.vo.MemberVO;
 
 @Mapper
 public interface MemberMapper {
@@ -12,5 +13,8 @@ public interface MemberMapper {
 	
 	// 2. id 중복 체크
 	public String checkId(String id);
+	
+	// 3. 회원 가입
+	public Integer write(MemberVO vo);
 	
 }
