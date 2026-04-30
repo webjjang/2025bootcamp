@@ -16,6 +16,8 @@ import com.webjjang.util.page.PageObject;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.log4j.Log4j2;
 
+// 자동생성되는 어노테이션
+// - @Controller, @Service, @Mapper, @Repository, @Component, @RestController, @~Advice
 @Controller
 @RequestMapping("/board")
 @Log4j2
