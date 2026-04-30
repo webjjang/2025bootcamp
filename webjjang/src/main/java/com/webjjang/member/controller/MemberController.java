@@ -114,6 +114,9 @@ public class MemberController {
 			id = ((LoginVO)session.getAttribute("login")).getId();
 		}
 		
+		// DB에서 가져온 데이터를 model에 담는다.
+		model.addAttribute("vo", service.view(id));
+		
 		// 내용에 해당되는 JSP 정보를 contentPage
 		model.addAttribute("contentPage", "../member/view.jsp");
 		// 창이름

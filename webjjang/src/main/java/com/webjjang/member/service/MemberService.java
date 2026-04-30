@@ -31,4 +31,9 @@ public class MemberService {
 		return mapper.write(vo);
 	}
 	
+	// 4. 내/회원 정보 보기
+	public MemberVO view(String id) {
+		return mapper.view(id);
+	};
+	
 }

@@ -29,4 +29,12 @@
 		values(#{id}, #{pw}, #{name}, #{gender}, #{birth}, #{tel}, #{email})
 	</insert>
 	
+	<!-- 4. 내 / 회원 정보 보기 -->
+	<select id="view" resultType="com.webjjang.member.vo.MemberVO">
+		select m.id, m.name, m.gender, m.birth, m.tel, m.email,
+			m.regDate, m.conDate, m.gradeNo, g.gradeName
+		from member m, grade g
+		where (m.id = #{id}) and (m.gradeNo = g.gradeNo)
+	</select>
+	
 </mapper>

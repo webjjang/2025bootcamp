@@ -20,4 +20,7 @@ public interface MemberMapper {
 	// 3. 회원 가입
 	public Integer write(MemberVO vo);
 	
+	// 4. 내/회원 정보 보기
+	public MemberVO view(String id);
+	
 }
