@@ -4,12 +4,19 @@
     "file:///c:/dtd/mybatis-3-mapper.dtd">
 <!-- "http://mybatis.org/dtd/mybatis-3-mapper.dtd" -->
 <mapper namespace="com.webjjang.member.mapper.MemberMapper">
-	<!-- 1. 로그인 처리 -->
+	<!-- 1-1. 로그인 처리 -->
 	<select id="login" resultType="com.webjjang.member.vo.LoginVO">
 		select m.id, m.name, m.gradeNo, g.gradeName
 		from member m, grade g
 		where (m.id = #{id} and m.pw = #{pw}) and (m.gradeNo = g.gradeNo)
 	</select>
+	
+	<!-- 1-2. 최근 접속일 수정 -->
+	<update id="setConDate">
+		update Member
+		set conDate = sysdate
+		where id = #{id}
+	</update>
 	
 	<!-- 2. id 중복 체크 -->
 	<select id="checkId" resultType="String">

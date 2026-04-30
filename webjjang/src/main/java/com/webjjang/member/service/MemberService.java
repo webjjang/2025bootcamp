@@ -13,9 +13,12 @@ public class MemberService {
 	@Autowired
 	private MemberMapper mapper;
 	
-	// 1. login
+	// 1. login & 최근 접속일 수정
 	public LoginVO login(LoginVO vo) {
-		return mapper.login(vo);
+		LoginVO resultVO = mapper.login(vo);
+		// 최근 접속일 처리 - 로그인 정보를 제대로 가져온 경우만 처리
+		if(resultVO != null) mapper.setConDate(vo.getId());
+		return resultVO;
 	}
 	
 	// 2. id 중복 체크

@@ -8,8 +8,11 @@ import com.webjjang.member.vo.MemberVO;
 @Mapper
 public interface MemberMapper {
 
-	// 1. 로그인 처리
+	// 1-1. 로그인 처리
 	public LoginVO login(LoginVO vo);
+	
+	// 1-2. 최근 접속일 수정
+	public Integer setConDate(String id);
 	
 	// 2. id 중복 체크
 	public String checkId(String id);
