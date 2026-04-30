@@ -17,4 +17,9 @@ public class MemberService {
 		return mapper.login(vo);
 	}
 	
+	// 2. id 중복 체크
+	public String checkId(String id) {
+		return mapper.checkId(id);
+	}
+	
 }

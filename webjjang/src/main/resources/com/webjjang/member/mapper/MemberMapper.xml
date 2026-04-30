@@ -10,4 +10,10 @@
 		from member m, grade g
 		where (m.id = #{id} and m.pw = #{pw}) and (m.gradeNo = g.gradeNo)
 	</select>
+	
+	<!-- 2. id 중복 체크 -->
+	<select id="checkId" resultType="String">
+		select id from member where id = #{id}
+	</select>
+	
 </mapper>

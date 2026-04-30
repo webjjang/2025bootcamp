@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.webjjang.member.service.MemberService;
@@ -74,6 +75,17 @@ public class MemberController {
 		model.addAttribute("title", "회원가입 폼");
 		
 		return "main/main";
+	}
+	
+	// 3-2. 아이디 중복 체크
+	@GetMapping("/checkId.do")
+	// @Controller에서 순수한 정보 데이터를 그대로 넘기자 - Rest Data
+	// Rest API 서버에서는 @ResponseBody 메서드에 다붙이게 된다.
+	// -> @RestController 만들고 어노테이션을 붙이지 않는다.
+	@ResponseBody
+	public String checkId(String id) {
+		String resultId = service.checkId(id);
+		return (resultId == null)?"":resultId;
 	}
 	
 }
