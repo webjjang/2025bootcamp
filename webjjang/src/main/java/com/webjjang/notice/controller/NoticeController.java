@@ -12,7 +12,7 @@ import lombok.extern.log4j.Log4j2;
 @Controller
 @RequestMapping("/notice")
 @Log4j2
-public class NotcieController {
+public class NoticeController {
 
 	// 1.list
 	@GetMapping("/list.do")
