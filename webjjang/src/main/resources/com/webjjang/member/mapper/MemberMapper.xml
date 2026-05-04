@@ -37,4 +37,20 @@
 		where (m.id = #{id}) and (m.gradeNo = g.gradeNo)
 	</select>
 	
+	<!-- 5. list -->
+	<select id="list" resultType="com.webjjang.member.vo.MemberVO">
+		select id, name, gender, birth, tel, email,
+			 status, gradeNo, gradeName
+		from(
+			select rownum rnum, id, name, gender, birth, tel, email,
+				 status, gradeNo, gradeName
+			from (
+				select m.id, m.name, m.gender, m.birth, m.tel, m.email,
+					m.status, m.gradeNo, g.gradName
+				from member m, grade g
+				where (m.gradeNo = g.gradeNo)
+			)
+		) where rnum between #{startRow} and #{endRow}
+	</select>
+	
 </mapper>

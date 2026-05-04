@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.webjjang.member.service.MemberService;
 import com.webjjang.member.vo.LoginVO;
 import com.webjjang.member.vo.MemberVO;
+import com.webjjang.util.page.PageObject;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
@@ -121,6 +122,18 @@ public class MemberController {
 		model.addAttribute("contentPage", "../member/view.jsp");
 		// 창이름
 		model.addAttribute("title", (isMine)?"내 정보 보기":"회원 정보 보기");
+		
+		return "main/main";
+	}
+	
+	// 5. list
+	@GetMapping("/list.do")
+	public String list(PageObject pageObject, Model model) {
+		
+		// 내용에 해당되는 JSP 정보를 contentPage
+		model.addAttribute("contentPage", "../member/list.jsp");
+		// 창이름
+		model.addAttribute("title","회원 리스트");
 		
 		return "main/main";
 	}
