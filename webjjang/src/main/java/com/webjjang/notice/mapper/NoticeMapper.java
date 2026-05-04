@@ -23,6 +23,6 @@ public interface NoticeMapper {
 	public Integer update(NoticeVO vo);
 	
 	// 5. delete
-	public Integer delete(NoticeVO vo);
+	public Integer delete(Long no);
 	
 }
