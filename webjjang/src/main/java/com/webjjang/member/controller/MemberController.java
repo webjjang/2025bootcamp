@@ -14,6 +14,7 @@ import com.webjjang.member.vo.LoginVO;
 import com.webjjang.member.vo.MemberVO;
 import com.webjjang.util.page.PageObject;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 
@@ -128,7 +129,13 @@ public class MemberController {
 	
 	// 5. list
 	@GetMapping("/list.do")
-	public String list(PageObject pageObject, Model model) {
+	public String list(Model model, HttpServletRequest request) throws Exception {
+		
+		// 페이지 정보와 검색 정보받기
+		PageObject pageObject = PageObject.getInstance(request);
+		
+		// DB에서 데이터를 가져와서 Model에 담는다.
+		model.addAttribute("list", service.list(pageObject));
 		
 		// 내용에 해당되는 JSP 정보를 contentPage
 		model.addAttribute("contentPage", "../member/list.jsp");

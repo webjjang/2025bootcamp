@@ -1,9 +1,12 @@
 package com.webjjang.member.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.webjjang.member.vo.LoginVO;
 import com.webjjang.member.vo.MemberVO;
+import com.webjjang.util.page.PageObject;
 
 @Mapper
 public interface MemberMapper {
@@ -22,5 +25,11 @@ public interface MemberMapper {
 	
 	// 4. 내/회원 정보 보기
 	public MemberVO view(String id);
+	
+	// 5. list
+	public List<MemberVO> list(PageObject pageObject);
+	
+	// 5-2 getTotalRow
+	public Long getTotalRow(PageObject pageObject);
 	
 }

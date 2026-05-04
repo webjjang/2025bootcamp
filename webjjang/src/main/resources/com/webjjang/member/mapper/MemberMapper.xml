@@ -46,11 +46,16 @@
 				 status, gradeNo, gradeName
 			from (
 				select m.id, m.name, m.gender, m.birth, m.tel, m.email,
-					m.status, m.gradeNo, g.gradName
+					m.status, m.gradeNo, g.gradeName
 				from member m, grade g
 				where (m.gradeNo = g.gradeNo)
 			)
 		) where rnum between #{startRow} and #{endRow}
+	</select>
+	
+	<!--  5-2. getTotalRow -->
+	<select id="getTotalRow" resultType="Long">
+		select count(*) from member
 	</select>
 	
 </mapper>
