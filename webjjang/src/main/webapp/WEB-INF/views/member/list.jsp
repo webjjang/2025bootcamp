@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,7 +118,9 @@
 					<td class="id">${vo.id }</td>
 					<td>${vo.name }</td>
 					<td>${vo.gender }</td>
-					<td>${vo.birth }</td>
+					<td>
+						<fmt:formatDate value="${vo.birth }" pattern="yyyy-MM-dd"/>
+					</td>
 					<td>${vo.tel }</td>
 					<td>${vo.email }</td>
 					<td>

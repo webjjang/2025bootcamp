@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,9 @@
 	</tr>
 	<tr>
 		<th>생년월일</th>
-		<td>${vo.birth }</td>
+		<td>
+			<fmt:formatDate value="${vo.birth }" pattern="yyyy-MM-dd"/>
+		</td>
 	</tr>
 	<tr>
 		<th>연락처</th>
@@ -35,11 +38,15 @@
 	</tr>
 	<tr>
 		<th>회원 가입일</th>
-		<td>${vo.regDate }</td>
+		<td>
+			<fmt:formatDate value="${vo.regDate }" pattern="yyyy-MM-dd"/>
+		</td>
 	</tr>
 	<tr>
 		<th>최근 접속일</th>
-		<td>${vo.conDate }</td>
+		<td>
+			<fmt:formatDate value="${vo.conDate }" pattern="yyyy-MM-dd"/>
+		</td>
 	</tr>
 	<tr>
 		<th>회원 등급명</th>
