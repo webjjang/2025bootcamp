@@ -1,5 +1,6 @@
 package com.webjjang.notice.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.webjjang.notice.service.NoticeService;
+import com.webjjang.util.page.PageObject;
+
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.log4j.Log4j2;
 
 @Controller
@@ -14,9 +19,20 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public class NoticeController {
 
+	@Autowired
+	private NoticeService service;
+	
 	// 1.list
 	@GetMapping("/list.do")
-	public String list(Model model) {
+	public String list(Model model, HttpServletRequest request) throws Exception {
+		
+		PageObject pageObject = PageObject.getInstance(request);
+		
+		// DB 데이터 모델 담기
+		model.addAttribute("list", service.list(pageObject));
+		
+		// PageObject 모델 담기 - JSP에서 pageNav 처리
+		model.addAttribute("pageObject", pageObject);
 		
 		// 내용에 해당되는 JSP 정보를 contentPage
 		model.addAttribute("contentPage", "../notice/list.jsp");

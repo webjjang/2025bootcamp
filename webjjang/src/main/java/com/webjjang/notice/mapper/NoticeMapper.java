@@ -2,9 +2,12 @@ package com.webjjang.notice.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
 import com.webjjang.notice.vo.NoticeVO;
 import com.webjjang.util.page.PageObject;
 
+@Mapper
 public interface NoticeMapper {
 
 	// 1-1. list
