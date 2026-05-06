@@ -107,14 +107,19 @@ public class NoticeController {
 	
 	// 6. update
 	@PostMapping("/update.do")
-	public String update(RedirectAttributes rttr) {
+	public String update(NoticeVO vo, String period, RedirectAttributes rttr, HttpServletRequest request)
+			throws Exception {
+		
+		PageObject pageObject = PageObject.getInstance(request);
 		
 		// 수정이 되었는지 결과에 따라 처리가 다름 if
+		Integer result = service.update(vo);
 		
 		// 메시지 처리
-		rttr.addFlashAttribute("msg", "새로운 공지가 등록되었습니다.");
+		if(result == 1) rttr.addFlashAttribute("msg", "공지 수정이 되었습니다.");
+		else rttr.addFlashAttribute("msg", "공지 수정에 실패하였습니다.");
 				
-		return "redirect:list.do";
+		return "redirect:view.do?no=" + vo.getNo() + "&" + pageObject.getPageQuery() + "&period=" +period;
 	}
 	
 	
