@@ -14,7 +14,7 @@
 		 history.back();
 	  });
 	  
-	  // datepicker 적용
+	  // datepicker 적용 - 입력 달력을 만든다.
 	  $(".datepicker").datepicker(
 		  {
 			   changeMonth: true,
@@ -28,7 +28,7 @@
 	  // 공지 시작일 & 공지 종료일 처리
 	  $("#startDate").datepicker("option",
 	   {
-		  // 최소 날짜 세팅
+		  // 최소 날짜 세팅 - new Date() : JS의 현재 날짜와 시간의 날짜 객체 생성
 	      "minDate" : new Date(),
 	      // 닫히는 이벤트가 발생되면(날짜를 선택하거나 다른 곳을 클릭하면 닫힌다.) 선택한 날짜를 selectedDate 파라메터로 받는다.
 	      onClose : function(selectedDate) {
@@ -70,6 +70,7 @@
 	  
 	  <div class="mb-3 mt-3">
 	    <label for="startDate" class="form-label">공지 시작일</label>
+	    <!-- jQuery UI - 날짜 입력 달력 : datepicker -->
 	    <input type="text" class="form-control datepicker" id="startDate" placeholder="xxxx-xx-xx" 
 	     name="startDate" autocomplete="off" readonly>
 	  </div>

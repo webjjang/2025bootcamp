@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.webjjang.notice.service.NoticeService;
+import com.webjjang.notice.vo.NoticeVO;
 import com.webjjang.util.page.PageObject;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -56,6 +57,7 @@ public class NoticeController {
 	
 	
 	// 3. writeForm
+	// a tag로 넘겨진 방식 - get
 	@GetMapping("/writeForm.do")
 	public String writeForm(Model model) {
 		
@@ -68,13 +70,20 @@ public class NoticeController {
 	}
 	
 	// 4. write
+	// form tag의 method 가 post로 지정
 	@PostMapping("/write.do")
-	public String write(RedirectAttributes rttr) {
+	public String write(NoticeVO vo, Integer perPageNum, RedirectAttributes rttr) {
+		
+		log.info("NoticeVO = " + vo);
+		log.info("perPageNum = " + perPageNum);
+		
+		// DB
+		service.write(vo);
 		
 		// 메시지 처리
 		rttr.addFlashAttribute("msg", "새로운 공지가 등록되었습니다.");
 				
-		return "redirect:list.do";
+		return "redirect:list.do?perPageNum=" + perPageNum;
 	}
 	
 	
