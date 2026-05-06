@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,15 +38,23 @@
 			</tr>
 			<tr>
 				<th>공지 기간</th>
-				<td>${vo.startDate } ~ ${vo.endDate }</td>
+				<td>
+					<fmt:formatDate value="${vo.startDate }" pattern="yyyy-MM-dd"/>
+					 ~
+					<fmt:formatDate value="${vo.endDate }" pattern="yyyy-MM-dd"/>
+				</td>
 			</tr>
 			<tr>
 				<th>최근 수정일</th>
-				<td>${vo.updateDate }</td>
+				<td>
+					<fmt:formatDate value="${vo.updateDate }" pattern="yyyy-MM-dd"/>
+				</td>
 			</tr>
 			<tr>
 				<th>최초 등록일</th>
-				<td>${vo.writeDate }</td>
+				<td>
+					<fmt:formatDate value="${vo.writeDate }" pattern="yyyy-MM-dd"/>
+				</td>
 			</tr>
 		</tbody>
 	</table>

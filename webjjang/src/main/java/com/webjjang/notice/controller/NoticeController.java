@@ -45,7 +45,10 @@ public class NoticeController {
 	
 	// 2. view
 	@GetMapping("/view.do")
-	public String view(Model model) {
+	public String view(Long no, Model model) {
+		
+		// DB에 있는 데이터 가져와서 model에 담기
+		model.addAttribute("vo", service.view(no));
 		
 		// 내용에 해당되는 JSP 정보를 contentPage
 		model.addAttribute("contentPage", "../notice/view.jsp");
