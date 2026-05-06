@@ -60,7 +60,7 @@
 	</table>
 	<a href="updateForm.do?no=${param.no }&page=${param.page }&perPageNum=${param.perPageNum }&key=${param.key }&word=${param.word }&period=${param.period}"
 	 class="btn btn-primary">수정</a>
-	<a id="deleteBtn" href="delete.do?no=${param.no }&page=${param.page }&perPageNum=${param.perPageNum }&key=${param.key }&word=${param.word }&period=${param.period}"
+	<a id="deleteBtn" href="delete.do?no=${param.no }&perPageNum=${param.perPageNum }"
 	 class="btn btn-danger">삭제</a>
 	<a href="list.do?page=${param.page }&perPageNum=${param.perPageNum }&key=${param.key }&word=${param.word }&period=${param.period}"
 	 class="btn btn-warning">리스트</a>

@@ -117,14 +117,16 @@ public class NoticeController {
 	
 	// 7. delete
 	@GetMapping("/delete.do")
-	public String delete(RedirectAttributes rttr) {
+	public String delete(Long no, Integer perPageNum, RedirectAttributes rttr) {
 		
 		// 수정이 되었는지 결과에 따라 처리가 다름 if
+		Integer result = service.delete(no);
 		
 		// 메시지 처리
-		rttr.addFlashAttribute("msg", "공지가 삭제되었습니다.");
+		if(result == 1 ) rttr.addFlashAttribute("msg", "공지가 삭제되었습니다.");
+		else rttr.addFlashAttribute("msg", "공지삭제에 실패하였습니다.");
 				
-		return "redirect:list.do";
+		return "redirect:list.do?perPageNum=" + perPageNum;
 	}
 	
 	
