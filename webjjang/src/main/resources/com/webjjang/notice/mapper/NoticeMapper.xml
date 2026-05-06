@@ -13,6 +13,7 @@
 			from (
 				select no, title, startDate, endDate, updateDate
 				from notice
+				<include refid="setPeriod" />
 				order by updateDate desc
 			)
 		) where rnum between #{startRow} and #{endRow}
@@ -22,7 +23,32 @@
 	<select id="getTotalRow">
 		select count(*)
 		from notice
+		<include refid="setPeriod" />
 	</select>
+	
+	<!-- 중복이 되거나 복잡하면 sql 태그를 만들어가 가져다가 사용한다. -->
+	<!-- 1-3 공지 종류 -->
+	<sql id="setPeriod">
+		<!-- 현재 공지 : pre -->
+		<if test="period == 'pre'">
+			where trunc(sysdate) between trunc(startDate) and trunc(endDate)
+		</if>
+		<!-- 지난 공지 : old -->
+		<if test="period == 'old'">
+		<![CDATA[
+			where trunc(sysdate) > trunc(endDate)
+		]]>
+		</if>
+		<!-- 예약 공지 : res -->
+		<if test="period == 'res'">
+		<![CDATA[
+			where trunc(sysdate) < trunc(startDate)
+		]]>
+		</if>
+		<!-- 전체 공지 : all  검색 조건 없음. -->
+		<if test="period == 'all'">
+		</if>
+	</sql>
 	
 	<!-- 2. view -->
 	<select id="view">

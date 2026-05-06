@@ -25,9 +25,10 @@ public class NoticeController {
 	
 	// 1.list
 	@GetMapping("/list.do")
-	public String list(Model model, HttpServletRequest request) throws Exception {
+	public String list(String period, Model model, HttpServletRequest request) throws Exception {
 		
 		PageObject pageObject = PageObject.getInstance(request);
+		if(period != null && !period.equals("")) pageObject.setPeriod(period);
 		
 		// DB 데이터 모델 담기
 		model.addAttribute("list", service.list(pageObject));
