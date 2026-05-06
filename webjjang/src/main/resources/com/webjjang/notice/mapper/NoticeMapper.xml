@@ -13,7 +13,7 @@
 			from (
 				select no, title, startDate, endDate, updateDate
 				from notice
-				order by updateDate
+				order by updateDate desc
 			)
 		) where rnum between #{startRow} and #{endRow}
 	</select>
