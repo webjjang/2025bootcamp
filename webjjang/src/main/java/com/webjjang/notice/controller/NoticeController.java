@@ -92,7 +92,10 @@ public class NoticeController {
 	
 	// 5. updateForm
 	@GetMapping("/updateForm.do")
-	public String updateForm(Model model) {
+	public String updateForm(Long no, Model model) {
+		
+		// DB에서 데이터 가져오기 - 공지 보기 처리
+		model.addAttribute("vo", service.view(no));
 		
 		// 내용에 해당되는 JSP 정보를 contentPage
 		model.addAttribute("contentPage", "../notice/updateForm.jsp");

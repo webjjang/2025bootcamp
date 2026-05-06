@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,14 +82,17 @@
 	  <div class="mb-3 mt-3">
 	    <label for="startDate" class="form-label">공지 시작일</label>
 	    <input type="text" class="form-control datepicker" id="startDate" placeholder="xxxx-xx-xx" 
-	     name="startDate" autocomplete="off" readonly value="${vo.startDate }">
+	     name="startDate" autocomplete="off" readonly 
+	     value="<fmt:formatDate value="${vo.startDate }" pattern="yyyy-MM-dd"/>">
+	     
 	  </div>
 
 	  <div class="mb-3 mt-3">
 	    <label for="endDate" class="form-label">공지 종료일</label>
 	    <!-- readonly : 키보드로 입력 못함. 달력을 클릭해서 입력한다. -->
 	    <input type="text" class="form-control datepicker" id="endDate" placeholder="xxxx-xx-xx" 
-	     name="endDate" autocomplete="off" readonly value="${vo.endDate }">
+	     name="endDate" autocomplete="off" readonly 
+	     value="<fmt:formatDate value="${vo.endDate }" pattern="yyyy-MM-dd"/>">
 	  </div>
 
 	  <button type="submit" class="btn btn-primary">수정</button>
