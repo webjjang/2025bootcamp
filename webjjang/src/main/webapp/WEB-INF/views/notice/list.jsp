@@ -57,10 +57,10 @@
 	<c:if test="${!empty login && login.gradeNo == 9 }">
 		<!-- 관리자 메뉴 -->
 		<div class="btn-group">
-		  <a href="list.do?period=pre" class="btn btn-primary">현재공지</a>
-		  <a href="list.do?period=old" class="btn btn-secondary">지난공지</a>
-		  <a href="list.do?period=res" class="btn btn-success">예약공지</a>
-		  <a href="list.do?period=all" class="btn btn-info">전체</a>
+		  <a href="list.do?perPageNum=${pageObject.perPageNum }&period=pre" class="btn btn-primary">현재공지</a>
+		  <a href="list.do?perPageNum=${pageObject.perPageNum }&period=old" class="btn btn-secondary">지난공지</a>
+		  <a href="list.do?perPageNum=${pageObject.perPageNum }&period=res" class="btn btn-success">예약공지</a>
+		  <a href="list.do?perPageNum=${pageObject.perPageNum }&period=all" class="btn btn-info">전체</a>
 		</div>
 	</c:if>
 	

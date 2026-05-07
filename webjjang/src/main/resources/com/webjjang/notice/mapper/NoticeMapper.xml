@@ -47,6 +47,7 @@
 		</if>
 		<!-- 전체 공지 : all  검색 조건 없음. -->
 		<if test="period == 'all'">
+			where 1 = 1
 		</if>
 	</sql>
 	

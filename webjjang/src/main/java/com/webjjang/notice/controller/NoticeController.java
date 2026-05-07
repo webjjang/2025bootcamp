@@ -27,7 +27,9 @@ public class NoticeController {
 	@GetMapping("/list.do")
 	public String list(String period, Model model, HttpServletRequest request) throws Exception {
 		
+		// 페이지 정보와 검색 정보가 자동으로 세팅된다.
 		PageObject pageObject = PageObject.getInstance(request);
+		// 공지 기간 종류가 넘어오면 넘어온 데이터를 세팅한다.
 		if(period != null && !period.equals("")) pageObject.setPeriod(period);
 		
 		// DB 데이터 모델 담기
