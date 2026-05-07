@@ -73,17 +73,14 @@
 	<div>
 		<form action="list.do" method="get">
 			<input type="hidden" name="perPageNum" value="${pageObject.perPageNum }">
+			<input type="hidden" name="period" value="${pageObject.period }">
 			
 			<div class="d-inline-flex">
 			  <!-- 넘어오는 검색 정보는 JavaScript로 처리하겠다. -> 데이터가 한개 일때만 가능하다. -->
 			  <select class="form-select" name="key" id="key">
 			  	<option value="t">제목</option>
 			  	<option value="c">내용</option>
-			  	<option value="w">작성자</option>
-			  	<option value="tc">제목/내용</option>
-			  	<option value="tw">제목/작성자</option>
-			  	<option value="cw">내용/작성자</option>
-			  	<option value="tcw">전체</option>
+			  	<option value="tc">전체</option>
 			  </select>
 				<div class="input-group mb-3">
 				  <input type="text" class="form-control" placeholder="Some text"
