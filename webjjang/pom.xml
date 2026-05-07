@@ -103,6 +103,18 @@
 	        <artifactId>spring-boot-starter-aop</artifactId>
 	    </dependency>
 
+		<!-- JSON 데이터 처리를 위한 라이브러리 -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		</dependency>
+
+		<!-- XML 데이터 처리를 위한 라이브러리 -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.dataformat</groupId>
+		    <artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
