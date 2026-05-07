@@ -12,7 +12,8 @@
 			select rownum rnum, no, title, startDate, endDate, updateDate
 			from (
 				select no, title, startDate, endDate, updateDate
-				from notice
+				<!-- Mybatis에서 데이터 대신에 글자를 바꾸고 싶은 경우 ${table} -->
+				from notice 
 				<include refid="setPeriod" />
 				<include refid="search" />
 				order by updateDate desc
