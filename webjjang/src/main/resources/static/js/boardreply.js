@@ -23,11 +23,12 @@ reply = {
 				// 가져온 JSON 데이터 확인하기
 				console.log("result str = " + JSON.stringify(result));
 				console.log("result.list = " + result.list);
-				console.log("result.list 의 갯수 = " + result.list.length);
+				if(result.list != null)
+					console.log("result.list 의 갯수 = " + result.list.length);
 				
 				let tagStr = "";
 				
-				if(result.list.length == 0 ){
+				if(result.list == null || result.list.length == 0 ){
 					console.log("가져온 데이터 없음");
 					tagStr += "댓글 데이터가 존재하지 않습니다.";
 				}
