@@ -23,6 +23,10 @@ public class BoardReplyService {
 	}
 	
 	// 2. write
+	public Integer write(BoardReplyVO vo) {
+		return mapper.write(vo);
+	}
+	
 	// 3. update
 	// 4. delete
 	

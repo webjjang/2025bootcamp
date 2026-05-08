@@ -9,14 +9,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.webjjang.boardreply.service.BoardReplyService;
 import com.webjjang.boardreply.vo.BoardReplyVO;
+import com.webjjang.member.vo.LoginVO;
 import com.webjjang.util.page.PageObject;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.log4j.Log4j2;
 
 @RestController
@@ -55,6 +59,27 @@ public class BoardReplyController {
 	}
 	
 	// 2. write
+	@PostMapping(
+			value = "/write.do"
+	)
+	// - 이전 : 항목이름 = 데이터 
+	// @RequestBody  - 현재 JSON 데이터가 넘어온다. 항목이름과 데이터가 넘어오는 데이터 안에 포함되어 있다.
+	public ResponseEntity<String> write(@RequestBody BoardReplyVO vo, HttpSession session){
+		
+		// 넘어오는 데이터 : no, content
+		log.info(vo);
+		
+		// id 수집
+		LoginVO loginVO = (LoginVO)session.getAttribute("login");
+		if(loginVO == null) 
+			return new ResponseEntity<String>("로그인이 필요한 처리입니다.", HttpStatus.BAD_REQUEST);
+		vo.setId(loginVO.getId());
+		
+		// DB 처리를 한다. - service
+		service.write(vo);
+		
+		return new ResponseEntity<String>("일반 게시판 댓글이 등록되었습니다.", HttpStatus.OK);
+	}
 	// 3. update
 	// 4. delete
 	

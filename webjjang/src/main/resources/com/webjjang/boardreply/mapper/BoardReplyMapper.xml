@@ -28,6 +28,11 @@
 	</select>
 	
 	<!-- 2. write -->
+	<insert id="write">
+		insert into board_reply(rno, no, content, id)
+		values(board_reply_seq.nextval, #{no}, #{content}, #{id})
+	</insert>
+	
 	<!-- 3. update -->
 	<!-- 4. delete -->
 </mapper>
