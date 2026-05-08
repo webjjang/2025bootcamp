@@ -37,7 +37,8 @@ public class BoardReplyController {
 		produces = {
 			MediaType.APPLICATION_JSON_VALUE
 	})
-	public ResponseEntity<Map<String, Object>> list(Long no, HttpServletRequest request) throws Exception {
+	public ResponseEntity<Map<String, Object>> list(Long no, HttpServletRequest request, HttpSession session)
+			throws Exception {
 		
 		log.info("일반게시판 댓글 리스트");
 		
@@ -50,7 +51,18 @@ public class BoardReplyController {
 		pageObject.setNo(Long.parseLong(request.getParameter("no")));
 		
 		// list 데이터 - null
-		map.put("list", service.list(pageObject));
+		List<BoardReplyVO> list = service.list(pageObject);
+
+		// sameId 세팅 처리 한다.\
+		String id = null;
+		LoginVO loginVO = (LoginVO)session.getAttribute("login");
+		if(loginVO != null) id = loginVO.getId(); // 로그인한 아이디 정보
+		
+		for(BoardReplyVO vo : list) {
+			if(vo.getId().equals(id)) vo.setSameId(1);
+		}
+		
+		map.put("list", list);
 		// pageObjcet
 		map.put("pageObject", pageObject);
 		
@@ -80,7 +92,33 @@ public class BoardReplyController {
 		
 		return new ResponseEntity<String>("일반 게시판 댓글이 등록되었습니다.", HttpStatus.OK);
 	}
+	
 	// 3. update
+	@PostMapping(
+			value = "/update.do"
+	)
+	// - 이전 : 항목이름 = 데이터 
+	// @RequestBody  - 현재 JSON 데이터가 넘어온다. 항목이름과 데이터가 넘어오는 데이터 안에 포함되어 있다.
+	public ResponseEntity<String> update(@RequestBody BoardReplyVO vo, HttpSession session){
+		
+		// 넘어오는 데이터 : rno, content
+		log.info(vo);
+		
+		// id 수집
+		LoginVO loginVO = (LoginVO)session.getAttribute("login");
+		if(loginVO == null) 
+			return new ResponseEntity<String>("로그인이 필요한 처리입니다.", HttpStatus.BAD_REQUEST);
+		vo.setId(loginVO.getId());
+		
+		// DB 처리를 한다. - service
+		Integer result = service.update(vo);
+		
+		if(result == 1)
+			return new ResponseEntity<String>("일반 게시판 댓글이 수정되었습니다.", HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("일반 게시판 댓글이 수정되지 않었습니다.", HttpStatus.NOT_MODIFIED);
+	}
+	
 	// 4. delete
 	
 }

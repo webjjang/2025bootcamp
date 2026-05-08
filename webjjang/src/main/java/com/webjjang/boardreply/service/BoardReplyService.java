@@ -28,6 +28,11 @@ public class BoardReplyService {
 	}
 	
 	// 3. update
+	public Integer update(BoardReplyVO vo) {
+		return mapper.update(vo);
+	}
+	
+	
 	// 4. delete
 	
 }

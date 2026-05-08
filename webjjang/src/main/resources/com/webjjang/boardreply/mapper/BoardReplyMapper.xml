@@ -34,5 +34,11 @@
 	</insert>
 	
 	<!-- 3. update -->
+	<update id="update">
+		update board_reply
+		set content = #{content}
+		where rno = #{rno} and id = #{id}
+	</update>
+	
 	<!-- 4. delete -->
 </mapper>
