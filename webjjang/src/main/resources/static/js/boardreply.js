@@ -88,7 +88,7 @@ reply = {
 			data:JSON.stringify(replyObj),
 			success:function(result){
 				console.log("result = " + result);
-				$("#msgModal").find(".modal-body").text((result==1)?"댓글이 수정되었습니다.":"댓글이 수정되지 않았습니다.");
+				$("#msgModal").find(".modal-body").text(result);
 				$("#msgModal").modal("show");
 			},
 			error: function(xhr,status,error){

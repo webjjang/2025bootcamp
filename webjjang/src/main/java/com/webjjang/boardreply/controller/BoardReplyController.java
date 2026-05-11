@@ -54,7 +54,7 @@ public class BoardReplyController {
 		List<BoardReplyVO> list = service.list(pageObject);
 
 		// sameId 세팅 처리 한다.\
-		String id = null;
+		String id = null; // 로그인한 아이디 정보
 		LoginVO loginVO = (LoginVO)session.getAttribute("login");
 		if(loginVO != null) id = loginVO.getId(); // 로그인한 아이디 정보
 		
