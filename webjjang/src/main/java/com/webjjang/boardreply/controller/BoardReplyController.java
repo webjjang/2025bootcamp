@@ -120,5 +120,23 @@ public class BoardReplyController {
 	}
 	
 	// 4. delete
+	@GetMapping("/delete.do")
+	public ResponseEntity<String> delete(Long rno, HttpSession session) {
+		
+		// id 수집
+		LoginVO loginVO = (LoginVO)session.getAttribute("login");
+		String id = null;
+		if(loginVO == null) 
+			return new ResponseEntity<String>("로그인이 필요한 처리입니다.", HttpStatus.BAD_REQUEST);
+		id = loginVO.getId();
+		
+		//DB 처리
+		Integer result = service.delete(rno, id);
+		if(result == 1)
+			return new ResponseEntity<String>("일반 게시판 댓글이 삭제되었습니다.", HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("일반 게시판 댓글이 삭제되지 않었습니다.", HttpStatus.NOT_MODIFIED);
+		
+	}
 	
 }

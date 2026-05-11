@@ -34,5 +34,8 @@ public class BoardReplyService {
 	
 	
 	// 4. delete
+	public Integer delete(Long rno, String id) {
+		return mapper.delete(rno, id);
+	}
 	
 }

@@ -108,16 +108,15 @@ reply = {
 		//Ajax를 이용해서 데이터 보내기 삭제 처리
 		$.ajax({
 			url:"/boardreply/delete.do?rno=" + rno,
-			success:function(result){
-				console.log("result = " + result);
-				if(result==1){
-					$("#msgModal").find(".modal-body")
-					.text("댓글이 삭제되었습니다.");
+			// result가 제대로 전달되는 경우 : 200, status가 success이다.
+			success:function(result, status){
+				console.log("result = " + result + ", status = " + status);
+				if(status == "success"){
+					$("#msgModal").find(".modal-body").text(result);
 					page = 1;
 				} else {
-					$("#msgModal").find(".modal-body")
-					.text("댓글이 삭제되지 않았습니다.");
-				};
+					$("#msgModal").find(".modal-body").text("댓글 삭제가 되지 않았습니다.");
+				}
 				$("#msgModal").modal("show");
 			},
 			error: function(xhr,status,error){

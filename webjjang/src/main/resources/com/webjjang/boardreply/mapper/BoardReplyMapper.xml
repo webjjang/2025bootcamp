@@ -41,4 +41,8 @@
 	</update>
 	
 	<!-- 4. delete -->
+	<delete id="delete">
+		delete from board_reply
+		where rno = #{rno} and id = #{id}
+	</delete>
 </mapper>
