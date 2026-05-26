@@ -11,12 +11,14 @@ function App() {
       {/* 맨 위에 메뉴 컴포넌트 : /src/components/common/TopNavi.jsx */}
       <TopNavi />
 
+      <div className="container">
       {/* 라이팅 - 메뉴별 */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/board/*" element={<BoardComp />} />
-        <Route path="*" element={<NotFoundMenu />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/board/*" element={<BoardComp />} />
+          <Route path="*" element={<NotFoundMenu />} />
+        </Routes>
+      </div>
       {/* 맨 아래 회사 소개 & 카피라이트 : /src/components/common/Footer.jsx */}
     </>
   )
