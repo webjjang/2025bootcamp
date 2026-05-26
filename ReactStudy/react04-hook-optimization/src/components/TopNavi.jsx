@@ -5,6 +5,7 @@ const TopNavi = () => {
     <nav>
       <NavLink to={"/"}>Home</NavLink>&nbsp;
       <NavLink to={"/use-ref1"}>useRef1</NavLink>&nbsp;
+      <NavLink to={"/use-ref2"}>useRef2</NavLink>&nbsp;
     </nav>
   );
 }
