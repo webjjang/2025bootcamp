@@ -10,6 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -59,6 +61,58 @@ public class BoardRestController {
 		map.put("pageObject", pageObject);
 				
 		return  new ResponseEntity<>(map, HttpStatus.OK);
+	}
+	
+	// 2. 글보기
+	@GetMapping(
+			value = "/view.do",
+			// 넘겨 주는 데이터 타입
+			produces = {
+				MediaType.APPLICATION_JSON_VALUE
+			}
+	)
+	public ResponseEntity<BoardVO> view(Long no, Integer inc) {
+		log.info("일반게시판(API) 글보기");
+		log.info("no=" + no + ", inc=" + inc);
+		BoardVO vo = service.view(no, inc);
+		if(vo != null)
+			return new ResponseEntity<BoardVO>(vo, HttpStatus.OK);
+		else return new ResponseEntity<BoardVO>(vo, HttpStatus.BAD_REQUEST);
+	}
+	
+	
+	// 3. 글등록 처리
+	@PostMapping(
+			value = "/write.do"
+	)
+	public ResponseEntity<String> write(@RequestBody BoardVO vo){
+		service.write(vo);
+		return new ResponseEntity<String>("일반 게시판에 글등록이 되었습니다.", HttpStatus.OK);
+	}
+	
+	
+	// 4. 글수정 처리
+	@PostMapping(
+			value = "/update.do"
+	)
+	public ResponseEntity<String> update(@RequestBody BoardVO vo){
+		Integer result = service.update(vo);
+		if(result == 1)
+			return new ResponseEntity<String>("일반 게시판에 글수정이 되었습니다.", HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("일반 게시판에 글수정에 실패 하였습니다.", HttpStatus.NOT_MODIFIED);
+	}
+	
+	// 5. 글삭제 처리
+	@PostMapping(
+			value = "/delete.do"
+	)
+	public ResponseEntity<String> delete(@RequestBody BoardVO vo){
+		Integer result = service.delete(vo);
+		if(result == 1)
+			return new ResponseEntity<String>("일반 게시판에 글삭제가 되었습니다.", HttpStatus.OK);
+		else
+			return new ResponseEntity<String>("일반 게시판에 글삭제에 실패 하였습니다.", HttpStatus.NOT_MODIFIED);
 	}
 	
 	
