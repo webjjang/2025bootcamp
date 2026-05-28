@@ -40,7 +40,8 @@ function BoardList(){
   let trTag = myJSON.list.map(
     (vo) => {
       return (
-        <tr className="dataRow" key={vo.no} >
+        <tr className="dataRow" key={vo.no}
+         onClick={() => location.href=`./view?no=${vo.no}&inc=1`}>
           <td className="no" >{vo.no}</td>
           <td>{vo.title}</td>
           <td>{vo.writer}</td>
