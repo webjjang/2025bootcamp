@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./Board.css"
 
 function BoardList(){
   // -- 데이터 처리 부분 ------------------

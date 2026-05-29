@@ -24,6 +24,7 @@ function BoardView(){
       setVo(response.data);
     }).catch((error)=> {
       console.log(`error : ${error}`);
+      console.log("vo : " + JSON.stringify(vo));
       alert('데이터를 불러오는 과정에서 에러가 발생했습니다.');
     })
   }, [no, inc]);// 컴포넌트가 호출되면 한번만 실행
@@ -34,6 +35,46 @@ function BoardView(){
       <div>/board/view</div>
       <hr />
       <p>일반 게시판 글보기 페이지 입니다.</p>
+      <table className="table">
+        {/* 조건부 랜더링 : vo.no가 null 이거나 0 인 경우 (tag 하나 - tbody tag) 랜더링한다. */}
+        {!vo.no && (
+          <tbody>
+            <tr>
+              <td>데이터가 존재하지 않습니다.</td>
+            </tr>
+          </tbody>
+        )}
+        {/* 조건부 랜더링 : vo.no가 0이 아닌 다른 숫자인 경우 랜더링한다. no의 특성상 0보다 큰 숫자만 활용 */}
+        {vo.no && (
+            <tbody>
+                <tr>
+                <th>번호</th>
+                <td>{vo.no}</td>
+              </tr>
+              <tr>
+                <th>제목</th>
+                <td>{vo.title}</td>
+              </tr>
+              <tr>
+                <th>내용</th>
+                <td><pre>{vo.content}</pre></td>
+              </tr>
+              <tr>
+                <th>작성자</th>
+                <td>{vo.writer}</td>
+              </tr>
+              <tr>
+                <th>작성일</th>
+                <td>{vo.writeDate}</td>
+              </tr>
+              <tr>
+                <th>조회수</th>
+                <td>{vo.hit}</td>
+              </tr>
+            </tbody>
+          )
+        }
+      </table>
       <a href="update">수정</a>&nbsp;
       <a href="delete">삭제</a>&nbsp;
       <a href="list">리스트</a>&nbsp;

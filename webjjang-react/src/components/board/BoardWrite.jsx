@@ -15,7 +15,7 @@ function BoardWrite(){
     document.getElementById('title').focus();
   },[]);
 
-  // 등록 버튼의 클릭 처리 -> 실제적으로 등록 시키는 것.
+  // 등록 버튼의 클릭 처리 -> 실제적으로 등록 시키는 것. 폼을 화면에 표시(랜더링 후) -> 데이터 수집 -> 등록
   const handleSubmit = async (e) => {
     e.preventDefault(); // 기본 동작을 무시시킨다. 페이지를 이동시키면서 데이터 넘기기
 
@@ -26,7 +26,7 @@ function BoardWrite(){
       setPw('');
       setPw2('');
       // 비밀번호에 커서를 위치시킨다.
-      document.getElementById('pw').focus();
+      document.getElementById('pw').focus(); // $("#pw").focus()
       return false;
     }
 
