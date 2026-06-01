@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function BoardView(){
   // 데이터 처리 ---------------------------------------------
@@ -13,7 +13,10 @@ function BoardView(){
   console.log("no:", no, ", inc:", inc);
 
   // 서버에서 가져온 데이터를 저장하는 상태 변수
-  const [vo, setVo] = useState({});
+  const [vo, setVo] = useState({}); // vo는 null이 아니다. vo로 판단이 안되서 vo.no로 판단한다.
+
+  // 컴포넌트 이동 - routing : 페이지 이동
+  const navigate = useNavigate();
 
   // 랜더링 전에 컴포넌트를 처음 실행할 때 Spring Boot Server에서 데이터 가져오기 - useEffect()
   useEffect(()=>{
@@ -75,7 +78,8 @@ function BoardView(){
           )
         }
       </table>
-      <a href="update">수정</a>&nbsp;
+      <button className="btn btn-primary" onClick={() => navigate(`/board/update?no=${no}`)
+      }>수정</button>&nbsp;
       <a href="delete">삭제</a>&nbsp;
       <a href="list">리스트</a>&nbsp;
     </>
