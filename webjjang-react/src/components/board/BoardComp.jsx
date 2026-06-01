@@ -15,7 +15,8 @@ function BoardComp(){
         <Route path="view" element={<BoardView /> } />
         <Route path="write" element={<BoardWrite /> } />
         <Route path="update" element={<BoardUpdate /> } />
-        <Route path="delete" element={<BoardDelete /> } />
+        {/* 글보기 안에 삭제 컴포넌트를 포함 시킨다.
+          <Route path="delete" element={<BoardDelete /> } /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

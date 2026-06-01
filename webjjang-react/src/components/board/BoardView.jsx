@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import BoardDelete from "./BoardDelete";
 
 function BoardView(){
   // 데이터 처리 ---------------------------------------------
@@ -80,8 +81,9 @@ function BoardView(){
       </table>
       <button className="btn btn-primary" onClick={() => navigate(`/board/update?no=${no}`)
       }>수정</button>&nbsp;
-      <a href="delete">삭제</a>&nbsp;
-      <a href="list">리스트</a>&nbsp;
+      <button className="btn btn-danger">삭제</button>&nbsp;
+      <button className="btn btn-success">리스트</button>&nbsp;
+      <BoardDelete no = {vo.no} />
     </>
   );
 }
