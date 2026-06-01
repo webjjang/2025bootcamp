@@ -16,6 +16,9 @@ function BoardView(){
   // 서버에서 가져온 데이터를 저장하는 상태 변수
   const [vo, setVo] = useState({}); // vo는 null이 아니다. vo로 판단이 안되서 vo.no로 판단한다.
 
+  // 삭제 div를 보이게/안보이게 하는 선택적 랜더링을 할 상태 변수
+  const [showDelete, setShowDelete] = useState(false);
+
   // 컴포넌트 이동 - routing : 페이지 이동
   const navigate = useNavigate();
 
@@ -32,6 +35,12 @@ function BoardView(){
       alert('데이터를 불러오는 과정에서 에러가 발생했습니다.');
     })
   }, [no, inc]);// 컴포넌트가 호출되면 한번만 실행
+
+  // 삭제 버튼은 누르면 showDelete를 상태 변경 시킨다.(토글)
+  const handleDeleteClick = () => {
+    setShowDelete(!showDelete);
+    if(showDelete) document.getElementById("pw").value = "";
+  }
 
   // 데이터 저장하고 데이터를 이용해서 HTML tag를 만든다.
   return(
@@ -81,9 +90,9 @@ function BoardView(){
       </table>
       <button className="btn btn-primary" onClick={() => navigate(`/board/update?no=${no}`)
       }>수정</button>&nbsp;
-      <button className="btn btn-danger">삭제</button>&nbsp;
+      <button className="btn btn-danger" onClick={handleDeleteClick}>삭제</button>&nbsp;
       <button className="btn btn-success">리스트</button>&nbsp;
-      <BoardDelete no = {vo.no} />
+      { showDelete && <BoardDelete no = {vo.no} handleCancel={handleDeleteClick} />}
     </>
   );
 }
