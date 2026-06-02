@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Board.css"
+import PageNation from "../common/PageNation";
 
 function BoardList(){
   // -- 데이터 처리 부분 ------------------
   // 데이터를 저장하는 부분
   const [myJSON, setMyJSON] = useState({list:[], pageObject:{}});
+
   // 데이터 가져오기
   useEffect(
     function(){
@@ -73,6 +75,7 @@ function BoardList(){
         </tbody>
       </table>
       <a href="write" className="btn btn-primary">등록</a>
+      <PageNation pageObject={myJSON.pageObject} />
     </>
   );
 }
