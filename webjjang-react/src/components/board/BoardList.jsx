@@ -2,9 +2,25 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./Board.css"
 import PageNation from "../common/PageNation";
+import { useSearchParams } from "react-router-dom";
 
 function BoardList(){
   // -- 데이터 처리 부분 ------------------
+  // 데이터 처리 ---------------------------------------------
+  // 파라메터로 넘어오는 데이터 수집 - useLocation
+  // const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const page = searchParams.get('page');
+  const perPageNum = searchParams.get('perPageNum');
+  const key = searchParams.get('key');
+  const word = searchParams.get('word');
+
+  console.log("page=",page, ",perPageNum=", perPageNum, ", key=",key,", word=",word);
+
+  const notPageQuery = `perPageNum=${perPageNum==null?"":perPageNum}&key=${key==null?"":key}&word=${word==null?"":word}`;
+  const query = `page=${page==null?"":page}&${notPageQuery}`;
+  console.log("query=", query);
+
   // 데이터를 저장하는 부분
   const [myJSON, setMyJSON] = useState({list:[], pageObject:{}});
 
@@ -12,7 +28,7 @@ function BoardList(){
   useEffect(
     function(){
       // fetch -> Axios
-      axios.get("http://localhost/boardApi/list.do")
+      axios.get("http://localhost/boardApi/list.do?" + query)
       .then((response) => {
         console.log("Axios를 이용한 데이터 가져오기");
         console.log("응답 데이터 : " + response);
@@ -36,7 +52,7 @@ function BoardList(){
             setMyJSON(json);
         })
       */
-    }, [] // 빈 배열을 함수 뒤에 선언하면 컴포넌트 호출되면 한번만 실행한다.
+    }, [query] // 빈 배열을 함수 뒤에 선언하면 컴포넌트 호출되면 한번만 실행한다.
   );
 
   // myJSON 데이터를 가져와서 tag를 만드는 함수
